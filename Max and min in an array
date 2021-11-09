@@ -1,0 +1,27 @@
+#include <iostream>
+#include <climits>
+using namespace std;
+
+int main() {
+	//intitalizing the array
+	int arr[10] = {1,3,5,8,13,2,15,33,4,6};
+	
+	//taking out min and max
+	int arrmax = INT_MIN;
+	int arrmin = INT_MAX;
+	
+	for(int i=0; i<10; i++){
+	    if(arr[i]>arrmax){
+	        arrmax = arr[i];
+	    }
+	    if(arr[i]<arrmin){
+	        arrmin = arr[i];
+	    }
+	}
+	
+	cout<<arrmax<<" is the maximum number"<<endl;
+	cout<<arrmin<<" is the minimum number"<<endl;
+	
+	
+	return 0;
+}
