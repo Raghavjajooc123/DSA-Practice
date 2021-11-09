@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+
+void selectionsort(int arr[], int n){
+    for(int i=0; i<n; i++){
+        //finding out the smallest part in the unsorted part
+        int min_index = i;
+        for(int j=i; j<n; j++){
+            if(arr[j]<arr[min_index]){
+                min_index=j;
+            }
+        }
+        //we now swap the min element to its corresponding position
+        swap(arr[i], arr[min_index]);
+    }
+    cout<<"The sorted array is :-"<<endl;
+    for(int z=0; z<n; z++){
+        cout<<arr[z]<<" ";
+    }
+}
+
+int main() {
+	// Selection sort
+    int arr[100];
+    int n, key;
+    
+    cout<<"Enter the number of elements in the array "<<endl;
+    cin>>n;
+    
+    cout<<"enter the elements of the array "<<endl;
+    for(int i=0; i<n; i++){
+        cin>>arr[i];
+    }
+    
+    selectionsort(arr, n);
+    
+	return 0;
+}
