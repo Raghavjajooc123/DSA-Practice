@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	// initializing an array
+	int arr[10]={0};
+	
+	//calculating the size of array 
+	int size = sizeof(arr);
+	cout<<size<<endl;
+	
+	//calculting the number of elements in the array
+	int sizeofarr = sizeof(arr)/sizeof(int);
+	cout<<sizeofarr<<endl;
+	
+	//taking inputs of the elements of the array
+	for(int i=0; i<sizeofarr ;i++){
+	    cin>>arr[i];
+	}
+	
+	//updating a single elements
+	arr[5] = 11;
+	
+	//printing of the elements of the array
+	for(int i=0; i<sizeofarr ;i++){
+	    cout<<arr[i]<<" ";
+	}
+	
+	return 0;
+}
