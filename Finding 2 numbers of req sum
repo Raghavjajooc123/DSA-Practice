@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int main(){
+    //given a sorted array, you have to write a code to know when 2 numbers sum to be required sum
+    int arr[1000]={1,2,3,4,5,6,7,8,9,10,11,12,13,14,15};
+    int total;
+    
+    cout<<"What total you want "<<endl;
+    cin>>total;
+    
+    int i=0;
+    int j=14;
+    while(i<j){
+        if(arr[i]+arr[j]==total){
+            cout<<arr[i]<<" + "<<arr[j]<<endl;
+            i++;
+            j--;
+        }
+        else if(arr[i]+arr[j]<total){
+            i++;
+        }
+        else{
+            j--;
+        }
+    }
+    return 0;
+}
