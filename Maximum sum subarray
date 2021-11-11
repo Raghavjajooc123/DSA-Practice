@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+
+int  MaxSubarraysum(int arr[], int n){
+    int maxsum=0;
+    int left=0;
+    int right=0;
+    for(int i=0; i<n; i++){
+        for(int j=i;j<n;j++){
+            int sum=0;
+            for(int z=i;z<=j;z++){
+                sum=sum+arr[z];
+            }
+            //if sum >maxsum updating the maxsum
+            if(sum>maxsum){
+                maxsum=sum;
+                left=i;
+                right=j;
+            }
+        }
+    }
+    cout<<"The maximum sum of the subarray is "<<maxsum<<endl;
+    cout<<"the array of maxsum is "<<endl;
+    for(int i=left;i<=right;i++){
+        cout<<arr[i]<<" ";
+    }
+}
+
+int main() {
+	// Maximum subarray sum - figuring out the subarray having max sum
+	int arr[100];
+    int n, key;
+    
+    cout<<"Enter the number of elements in the array "<<endl;
+    cin>>n;
+    
+    cout<<"enter the elements of the array "<<endl;
+    for(int i=0; i<n; i++){
+        cin>>arr[i];
+    }
+    
+    int maxsum= MaxSubarraysum(arr, n);
+
+    
+	return 0;
+}
