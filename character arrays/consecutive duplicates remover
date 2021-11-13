@@ -1,0 +1,33 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+void remduplicates(char word[]){
+    int i=0;
+    int j=1;
+    
+    while(word[j]!='\n'){
+        if(word[i]==word[j]){
+            j++;
+        }
+        else{
+            i++;
+            word[i]=word[j];
+            j++;
+        }
+    }
+    word[i+1]='\n';
+    return;
+}
+
+int main() {
+	// removes consecutive duplicate characters from the string
+	char word[1000];
+	cout<<"Enter the string "<<endl;
+	cin>>word;
+	
+	remduplicates(word);
+	
+	cout<<word<<endl;
+	return 0;
+}
