@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+void readline(char carr[], int n){
+    int i=0;
+    char ch = cin.get();
+    while(ch != '\n'){
+        carr[i] = ch;
+        i++;
+        if (i==n-1){
+            break; 
+        }
+        ch=cin.get();
+    }
+    carr[i]='\n';
+    return;
+}
+
+int main() {
+	char carr[1000];
+	
+	int n = 1000;    
+    //n is the max length of the array
+	
+	cout<<"enter the sentence"<<endl;
+	readline(carr, n);
+	
+	cout<<carr;
+	return 0;
+}
