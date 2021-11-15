@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+
+void rotateanti(int image[100][100], int m, int n){
+    //rotating 90 degree anticlockwise
+    for(int i=m-1; i>=0; i--){
+        for(int j=0; j<n; j++){
+            cout<<image[j][i]<<" ";
+        }
+        cout<<endl;
+    }
+    return;
+}
+
+int main() {
+	// Rotating anticlockwise by 90 degree
+	int m,n;
+	cout<<"Enter the number of rows and cols in the matrix "<<endl;
+	cin>>m>>n;
+	int a = 1;
+	int image[100][100];
+	
+	for(int i=0; i<m; i++){
+	    for(int j=0; j<n; j++){
+	        image[i][j]=a;
+	        a++;
+	    }
+	}
+	
+	cout<<"Normally printed array "<<endl;
+	for(int i=0; i<m; i++){
+	    for(int j=0; j<n; j++){
+	        cout<<image[i][j]<<" ";
+	    }
+	    cout<<endl;
+	}
+	
+    rotateanti(image, m, n);
+    
+	return 0;
+}
