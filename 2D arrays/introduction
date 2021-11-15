@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	// 2D array
+	
+	int array[3][4];
+	
+	//iterating over the array
+	cout<<"Enter your 2D array ";
+	for(int row=0;row<3;row++){
+	    for(int col=0;col<4;col++){
+	        cin>>array[row][col];
+	    }
+	}
+	
+	for(int row=0;row<3;row++){
+	    for(int col=0;col<4;col++){
+	        cout<<array[row][col]<<"  ";
+	    }
+	    cout<<endl;
+	}
+	return 0;
+}
