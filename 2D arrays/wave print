@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+void waveprint(int array[3][4]){
+    for(int col=0;col<4;col++){
+        if(col%2==0){
+            //even column
+            for(int row=0;row<3;row++){
+                cout<<array[row][col]<<" ";
+            }
+        }
+        else{
+            //odd col
+            for(int row=2;row>=0;row--){
+                cout<<array[row][col]<<" ";
+            }
+        }
+    }   
+}
+
+int main() {
+	// 2D array
+	
+	int array[3][4];
+	
+	//iterating over the array
+	cout<<"Enter your 2D array "<<endl;
+	for(int row=0;row<3;row++){
+	    for(int col=0;col<4;col++){
+	        cin>>array[row][col];
+	    }
+	}
+	
+	//normal print
+	for(int row=0;row<3;row++){
+	    for(int col=0;col<4;col++){
+	        cout<<array[row][col]<<"  ";
+	    }
+	    cout<<endl;
+	}
+	
+	waveprint(array);
+	
+	return 0;
+}
