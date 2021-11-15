@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+
+void spiralprint(int array[1000][1000], int m,int n){
+
+    int frow = 0;
+    int fcol = 0;
+    int lrow = m-1;
+    int lcol = n-1;
+    
+    while(frow<=lrow && fcol<=lcol){
+        
+        for(int i=fcol; i<=lcol; i++){
+            cout<<array[frow][i]<<" ";
+        }
+        frow++;
+        
+        for( int j=frow; j<=lrow; j++){
+            cout<<array[j][lcol]<<" ";
+        }
+        lcol--;
+        
+        if(lrow>frow){
+            for(int k=lcol;k>=fcol;k--){
+                cout<<array[lrow][k]<<" ";
+            }
+        }
+        lrow--;
+        
+        if(lcol>fcol){
+            for(int l=lrow; l>=frow; l--){
+                cout<<array[l][fcol]<<" ";
+            }
+        }
+        fcol++;
+    }
+}
+
+int main() {
+	// 2D array
+	int m,n;
+	
+	cin>>m>>n;
+	
+	int array[1000][1000];
+	
+	//iterating over the array
+	cout<<"Enter your 2D array "<<endl;
+	for(int row=0;row<m;row++){
+	    for(int col=0;col<n;col++){
+	        cin>>array[row][col];
+	    }
+	}
+	
+	//normal print
+	for(int row=0;row<m;row++){
+	    for(int col=0;col<n;col++){
+	        cout<<array[row][col]<<"  ";
+	    }
+	    cout<<endl;
+	}
+	
+	spiralprint(array, m, n);
+	
+	return 0;
+}
