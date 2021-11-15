@@ -1,0 +1,50 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    
+	// Piyush and magical park
+	
+	char park[10][10];
+	int m,n,s,k;
+	bool sucess="true";
+	
+	cout<<"Enter the value of m, n, s, k "<<endl;
+	cin>>m>>n>>s>>k;
+	
+	for(int i=0;i<m;i++){
+	    for(int j=0;j<n;j++){
+	        cin>>park[i][j];
+	    }
+	}
+	
+	for(int i=0;i<m;i++){
+	    for(int j=0;j<n;j++){
+	       if(s<k){
+	           sucess= false;
+	           break;  
+	       }
+    	   if(park[i][j]=='.'){
+    	       s=s-2;
+    	   }
+    	   if(park[i][j]=='*'){
+    	       s=s+5;
+    	   }
+    	   if(park[i][j]=='#'){
+    	       break;
+	       }
+	       if(j!=n-1){
+	            s--;
+	       }
+	    }
+	}
+	
+	if(!sucess){
+	    cout<<"Piyush can not cross the park"<<endl;
+	}
+	else{
+	    cout<<"Piyush crosses the park with s = "<<s;
+	}
+	
+	return 0;
+}
