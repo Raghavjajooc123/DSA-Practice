@@ -1,0 +1,35 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	// staircase search
+	
+	int arr[4][4];
+	
+	for(int i=0; i<4; i++){
+	    for(int j=0; j<4; j++){
+	        cin>>arr[i][j];
+	    }
+	}
+	
+	int key = 1;
+    int i=0;
+    int j=3;
+    
+    
+    while(arr[i][j]!=key&&i<4&&j>=0){
+        if(arr[i][j]<key){
+            i++;
+        }
+        else{
+            j--;
+        }
+    }
+    if(arr[i][j]==key){
+        cout<<"element found at "<<i<<" "<<j<<endl;
+    }
+    else{
+        cout<<"element not found";
+    }
+	return 0;
+}
