@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+void maxsumsubmatrix(int arr[10][10], int m, int n){
+    
+    //creating the suffix array
+    for(int i=m-1; i>=0; i--){
+        for(int j=n-2; j>=0; j--){
+            arr[i][j]+=arr[i][j+1];
+        }
+    }
+    for(int j=n-1; j>=0; j--){
+        for(int i=m-2; i>=0; i--){
+            arr[i][j]+=arr[i+1][j];
+        }
+    }
+    
+    int sum= 0;
+    for(int i=0; i<m; i++){
+	    for(int j=0; j<n; j++){
+	        if(arr[i][j]>sum){
+	            sum=arr[i][j];
+	        }
+	    }
+	}
+    cout<<"the max sum is "<<sum;
+    return;
+}
+
+int main() {
+	//Max sum Submatrix in a row and col wise sorted matrix
+	int m,n;
+	int sum=0;
+	cout<<"Enter the rows and cols "<<endl;
+	cin>>m>>n;
+	
+	int arr[10][10];
+	cout<<"enter the array "<<endl;
+	for(int i=0; i<m; i++){
+	    for(int j=0; j<n; j++){
+	        cin>>arr[i][j];
+	    }
+	}
+	
+	maxsumsubmatrix(arr, m, n);
+	return 0;
+}
