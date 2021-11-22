@@ -1,0 +1,66 @@
+#include <iostream>
+using namespace std;
+void submatrixsumquery(int arr[10][10], int m, int n){
+    int q;
+    cout<<"enter the number of queries"<<endl;
+    cin>>q;
+
+    //creating comutative matrix    
+    for(int i=0; i<m; i++){
+        for(int j=1; j<n; j++){
+            arr[i][j]+=arr[i][j-1];
+        }
+    }
+    for(int j=0; j<n; j++){
+        for(int i=1; i<m; i++){
+            arr[i][j]+=arr[i-1][j];
+        }
+    }
+    
+    //printing the array
+    for(int i=0; i<m; i++){
+	    for(int j=0; j<n; j++){
+	        cout<<arr[i][j]<<" ";
+	    }
+	    cout<<endl;
+	}
+    
+    int t1,t2,b1,b2;
+    for(int a=1; a<=q; a++){
+        cout<<"enter the TL and BR"<<endl;
+        cin>>t1>>t2>>b1>>b2;
+        int sum=0;
+        if(t1&&t2==0){
+            sum= arr[b1][b2];
+        }
+        else if(t1==0){
+            sum= arr[b1][b2]-arr[b1][t2-1];
+        }
+        else if(t1==0){
+            sum= arr[b1][b2]-arr[t1-1][b2];
+        }
+        else{
+            sum= arr[b1][b2]-arr[b1][t2-1]-arr[t1-1][b2]+arr[t1-1][t2-1];
+        }
+        cout<<"Sum is "<<sum<<endl;
+    }
+    return;
+}
+int main() {
+	// Submatrix sum query of a matrix
+	int m,n;
+	int sum=0;
+	cout<<"Enter the rows and cols "<<endl;
+	cin>>m>>n;
+	
+	int arr[10][10];
+	cout<<"enter the array "<<endl;
+	for(int i=0; i<m; i++){
+	    for(int j=0; j<n; j++){
+	        cin>>arr[i][j];
+	    }
+	}
+	
+	submatrixsumquery(arr, m, n);
+	return 0;
+}
