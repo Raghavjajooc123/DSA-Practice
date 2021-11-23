@@ -1,0 +1,39 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+void targetSumTriplet(int arr[1000], int n, int x){
+	int l,m;
+	for(int f=0;f<n-2;f++){
+		int m= f+1;
+		int l= n-1;
+		while(m<l){
+			if(arr[f]+arr[m]+arr[l]<x){
+				m++;
+			}
+			else if(arr[f]+arr[m]+arr[l]>x){
+				l--;
+			}
+			else if(arr[f]+arr[m]+arr[l]==x){
+				cout<<arr[f]<<", "<<arr[m]<<" and "<<arr[l]<<endl;
+				m++;
+				l--;
+			}
+		}
+	}
+}
+int main() {
+	int n;
+	cin>>n;
+	int arr[1000];
+	for(int i=0;i<n;i++){
+		cin>>arr[i];
+	}
+	int x;
+	cin>>x;
+
+	sort(arr, arr+n);
+
+	targetSumTriplet(arr, n, x);
+
+	return 0;
+}
