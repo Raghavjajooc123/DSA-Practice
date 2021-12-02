@@ -1,0 +1,44 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	// Binary search first and last occurences
+	int arr[]={19,17,13,12,11,9,8,6,6,6,6,6,6,4,1};
+	int key = 6;
+	int s,e,m;
+	s= 0;
+	e= sizeof(arr)/sizeof(int)-1;
+	
+	while(s<e){
+	    m=(s+e)/2;
+	    if(arr[m]==key){
+	        break;
+	    }
+	    else if(arr[m]>key){
+	        e = m-1;
+	    }
+	    else{
+	        s = m+1;
+	    }
+	}
+	
+	cout<<"Found at "<<m<<endl;
+	
+	int a,b;
+	a=b=m;
+	
+	while(arr[a]==key){
+	    a++;
+	}
+	while(arr[b]==key){
+	    b--;
+	}
+
+	cout<<"The frequency of element is "<<a-b-1<<endl;
+	
+	cout<<"First occurance "<<b+1<<endl;
+	
+	cout<<"last occurance "<<a-1<<endl;
+	
+	return 0;
+}
