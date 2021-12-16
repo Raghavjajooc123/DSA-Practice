@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+bool ispossible(int n, int m, int x, int y, int mid){
+    int no_stu = 0;//number of students the scholarship is given to
+    int count = m;
+    for(int k = 0;k<n; k++){
+        if(count>=x){
+            //scholarship is given
+            no_stu++;
+            count = count - x;
+        }
+        else{
+            //tokens are taken
+            count = count+y;
+        }
+    }
+    if(no_stu>=mid){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+int main() {
+	// CB scholarship problem
+    int n,m,x,y;
+    cin>>n>>m>>x>>y;
+    
+    int s = 0;
+    int e = n;
+    int ans = 0;
+    int mid;
+    while(s<=e){
+        mid = (s+e)/2;
+        if(ispossible(n,m,x,y,mid)){
+            ans = max(ans, mid);
+            s = mid+1;
+        }
+        else{
+            e = mid-1;
+        }
+    }
+    
+    cout<<ans<<endl;
+    return 0;
+}
