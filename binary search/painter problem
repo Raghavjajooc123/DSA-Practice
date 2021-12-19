@@ -1,0 +1,55 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+
+bool ispossible(int n, int k, int t, int boards[100000], int mid){
+	int curr_painters_time = 0;
+	int painter_number = 1;
+	
+	for(int l = 0; l<n; l++){
+		if((curr_painters_time + (boards[l] * t)) > mid){
+			painter_number++;
+			curr_painters_time = boards[l] * t;
+			if(painter_number > k){
+				return false;
+			}
+		}
+		else{
+			curr_painters_time = curr_painters_time + (boards[l] * t);
+		}
+	}
+	return true;
+}
+
+int painters(int n, int k, int t, int boards[100000], int sum){
+	int s = 0; 
+	int e = sum*t;
+	int ans = e;
+	int mid = 0;
+	while(s<=e){
+		mid=(s+e)/2;
+		if(ispossible(n,k,t,boards,mid)){
+			ans = min(ans, mid);
+			e = mid-1;
+		}
+		else{
+			s = mid+1;
+		}
+	}
+	return ans;
+}
+
+int main() {
+	int n, k, t;
+	cin>>n>>k>>t;
+	int sum = 0;
+	int boards[100000];
+	for(int i=0; i<n; i++){
+		cin>>boards[i];
+		sum+=boards[i];
+	}
+	sort(boards, boards+n);
+	int finalanswer = painters(n,k,t,boards,sum)%1000003;
+	cout<<finalanswer<<endl;
+	return 0;
+}
