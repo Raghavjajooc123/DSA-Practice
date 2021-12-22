@@ -1,0 +1,27 @@
+#include <iostream>
+using namespace std;
+
+template<typename T>
+int search(T arr[100], int n, T key){
+    for(int i = 0; i<n; i++){
+        if(arr[i] == key){
+            return i;
+        }
+    }
+    return -1;
+}
+int main() {
+	// generic linear search function
+	int n; 
+	cin>>n;
+	int arr[100];
+	for(int i=0; i<n; i++){
+	    cin>>arr[i];
+	}
+	int key;
+	cin>>key;
+	
+	cout<<search(arr, n, key)<<endl;
+	
+	return 0;
+}
