@@ -1,0 +1,45 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int main(){
+    //creating and initializing a vector
+    vector<int> a;
+    int n;
+    cin>>n;
+    for(int i=0; i<n; i++){
+        int no;
+        cin>>no;
+        a.push_back(no);
+    }
+    
+    //for each loop
+    for(int x:a){
+        cout<<x<<" ";
+    }
+    cout<<endl;
+    
+    a.pop_back();
+        for(int x:a){
+        cout<<x<<" ";
+    }
+    cout<<endl;
+    
+    a.insert(a.begin()+2, 3,10);
+        for(int x:a){
+        cout<<x<<" ";
+    }
+    cout<<endl;
+    
+    a.erase(a.begin()+2, a.begin()+5);
+        for(int x:a){
+        cout<<x<<" ";
+    }
+    cout<<endl;
+    
+    cout<<a.size()<<endl;
+    cout<<a.capacity()<<endl;
+    cout<<a.front()<<endl;
+    cout<<a.back()<<endl;
+    
+	return 0;
+}
