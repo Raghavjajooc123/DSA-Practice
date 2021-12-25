@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int main(){
+    //creating and initializing a vector
+    vector<int> a;
+    vector<int> b(5, 10);//5 integers with value 10
+    vector<int> c(b.begin(), b.end());
+    vector<int> d{1,2,3,4};
+    
+    //inputing a vector
+    for(int i=0; i<b.size(); i++){
+        cout<<b[i]<<" ";
+    }
+    cout<<endl;
+    
+    //iterating over a vector
+    for(auto it = d.begin(); it!=d.end(); it++){
+        cout<<(*it)<<" ";
+    }
+    cout<<endl;
+    
+    //for each loop
+    for(int x:b){
+        cout<<x<<" ";
+    }
+    cout<<endl;
+	return 0;
+}
