@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+
+int clearrangeitoj(int a, int i, int j){
+    int mask = (~(~(-1<<(i-j+1))<<j));
+    a = a&mask;
+    cout<<a<<endl;
+    return a;
+}
+
+int main() {
+    //2 numbers problem - replace bits in n by m
+    int n = 1024;
+    int m = 21;
+    int j = 2;
+    int i = 6;
+    
+    clearrangeitoj(n, i, j);
+    
+    n = n|(m<<j);
+    
+    cout<<n<<endl;
+	
+	return 0;
+}
