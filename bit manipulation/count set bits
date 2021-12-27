@@ -1,0 +1,26 @@
+#include <iostream>
+using namespace std;
+
+int no_of_setbits(int n){
+    int num = n;
+    int ans = 0;
+    while(num!=0){
+        if(num&1){
+            ans++;
+        }
+        num = num>>1;
+    }
+    return ans;
+}
+
+int main() {
+    //counting set bits
+	int n;
+	cin>>n;
+	for(int i= 0; i<n; i++){
+		int a;
+		cin>>a;
+		cout<<no_of_setbits(a)<<endl;
+	}
+	return 0;
+}
