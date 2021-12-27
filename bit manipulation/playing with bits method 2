@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int no_of_setbits(int n){
+    int ans = 0;
+    while(n!=0){
+        n = n&(n-1);
+		ans++;
+    }
+    return ans;
+}
+
+int main() {
+    //playing with bits - method 2 and inbuilt method
+	int q;
+	cin>>q;
+	for(int i=0; i<q; i++){
+		int finalans = 0;
+		int n,m;
+		cin>>n>>m;
+		for(int j = n; j<=m; j++){
+			finalans += no_of_setbits(j);
+		}
+		cout<<finalans<<endl;
+	}
+  
+  //__builtin_popcount(n) is the builtin function which can be used to count the number of set bits in a number
+	return 0;
+}
