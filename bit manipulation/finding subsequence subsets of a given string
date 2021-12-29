@@ -1,0 +1,26 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+void findingsubsets(char a[100]){
+    int n = strlen(a);
+    int noofpossiblesubsets = 1;
+    for(int i=0;i<n; i++){
+        noofpossiblesubsets*=2;
+    }
+    for(int i=0; i<noofpossiblesubsets; i++){
+        for(int j=0; j<n; j++){
+            if((i>>j)&1){
+                cout<<a[j];
+            }
+        }
+        cout<<endl;
+    }
+}
+
+int main() {
+	// finding subsequence subsets of a given string
+    char a[100];
+    cin>>a;
+    findingsubsets(a);
+	return 0;
+}
