@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+void uniquenotwo(int arr[100000], int n){
+	int count = 1;
+	int xorresult = arr[0];
+	while(count<n){
+		xorresult = xorresult^arr[count];
+		count++;
+	}
+	count = 0;
+	int temp = xorresult;
+	while(temp>0){
+		int curr_bit = temp&1;
+		if(curr_bit == 1){
+			break;
+		}
+		count++;
+		temp = temp>>1;
+	}
+	temp = 1<<count;
+	int firstnum = xorresult;
+	for(int i=0; i<n; i++){
+		if(arr[i]&temp){
+			firstnum = firstnum ^ arr[i];
+		}
+	}
+	int secondnum = firstnum ^ xorresult;
+	cout<<min(firstnum,secondnum)<<" "<<max(firstnum,secondnum)<<endl;
+}
+
+int main() {
+	int n;
+	cin>>n;
+	int arr[100000];
+	for(int i=0; i<n; i++){
+		cin>>arr[i];
+	}
+	uniquenotwo(arr, n);
+	return 0;
+}
