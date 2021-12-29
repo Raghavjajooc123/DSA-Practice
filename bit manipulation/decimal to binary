@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+int coverttobinary(int n){
+    int decimal = 0;
+    int mfactor = 1;
+    while(n!=0){
+        int digit = n&1;
+        decimal=decimal+(digit*mfactor);
+        mfactor*=10;
+        n = n>>1;
+    }
+    return decimal;
+}
+
+int main() {
+	// decimal to binary
+	int n;
+	cin>>n;
+	
+	cout<<coverttobinary(n)<<endl;
+	
+	return 0;
+}
