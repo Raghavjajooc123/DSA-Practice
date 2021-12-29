@@ -1,0 +1,32 @@
+#include<iostream>
+using namespace std;
+void uniquenothree(int arr[100000], int n, int max){
+	int power = 1;
+	int ans = 0;
+	while(max!=0){
+		int sumatcurrpos = 0;
+		for(int i=0; i<n; i++){
+			sumatcurrpos = sumatcurrpos+(arr[i] & 1);
+			arr[i] = arr[i]>>1;
+		}
+		ans = ans + (power * (sumatcurrpos % 3));
+		max = max>>1;
+		power*=2;
+	}
+	cout<<ans<<endl;
+}
+
+int main() {
+	int n;
+	cin>>n;
+	int max = 0;  
+	int arr[100000];
+	for(int i=0; i<n; i++){
+		cin>>arr[i];
+		if(arr[i]>max){
+			max = arr[i];
+		}
+	}
+	uniquenothree(arr, n, max);
+	return 0;
+}
