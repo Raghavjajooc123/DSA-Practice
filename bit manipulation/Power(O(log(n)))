@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+
+void calculatepower(int a, int n){
+	int ans = 1;
+	while(n>0){
+		int currpos = n&1;
+		if(currpos == 1){
+			ans = ans * a;
+		}
+		a = a*a;
+		n = n>>1;
+	}
+	cout<<ans<<endl;
+}
+
+int main() {
+	int a,n;
+	cin>>a>>n;
+	calculatepower(a,n);
+	return 0;
+}
