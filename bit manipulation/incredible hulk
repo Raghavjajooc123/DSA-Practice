@@ -1,0 +1,22 @@
+#include<iostream>
+using namespace std;
+int hulkk(int n){
+	int steps = 0;
+	while(n>0){
+		if(n&1){
+			steps+=1;
+		}
+		n= n>>1;
+	}
+	return steps;
+}
+int main() {
+	int t;
+	cin>>t;
+	for(int i=0; i<t; i++){
+		int n;
+		cin>>n;
+		cout<<hulkk(n)<<endl;
+	}
+	return 0;
+}
