@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+int notsoeasymath(int n){
+	int arr[] = {2,3,5,7,11,13,17,19};
+	int x = 1<<8;
+	int ans = 0;
+	for(int j=1; j<x; j++){
+	   int currnum = 1;
+	   int noofsetbits = 0;
+	   int temp = j;
+	   for(int k = 0; k<8; k++){
+	        if(temp&1){
+	            currnum = currnum*arr[k];
+	            noofsetbits+=1;
+	        }
+	        temp=temp>>1;
+	    }
+	    if(noofsetbits%2){
+	        ans = ans + (n/currnum);   
+	    }
+	    else{
+	        ans = ans - (n/currnum); 
+	    }
+	}
+	return ans;
+}
+
+int main() {
+	// not so easy math
+	int t;
+	cin>>t;
+	for(int i = 0; i<t; i++){
+	    int n;
+	    cin>>n;
+	    cout<<notsoeasymath(n)<<endl;
+	}
+	return 0;
+}
