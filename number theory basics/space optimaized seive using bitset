@@ -1,0 +1,48 @@
+#include <iostream>
+#include <bitset>
+#include <vector>
+using namespace std;
+
+const int N = 10000000;
+bitset<10000005> p;
+vector<int> primes;
+
+void prime_seive(){
+    //marking all odd numbers as primes
+    p.set();//{1,1,1,1,1,1.....}
+    p[0]=p[1]=0;
+    for(long long int i = 2; i<=N; i++){
+        if(p[i]==1){
+            primes.push_back(i);
+            for(long long int j = i*i; j<=N; j+=i){
+                p[j]=0;
+            }
+        }
+    }
+}
+
+bool isprime(long long int n){
+    if(n<N){
+        return p[n]==1?true:false;
+    }
+    for(long long int i=0; primes[i] * (long long)primes[i] <= n; i++){
+        if(n%primes[i]==0){
+            return false; 
+        }
+    }
+    return true;
+}
+
+int main() {
+	// space optimised sieve using bitset
+    prime_seive();
+    long long int n;
+	cin>>n;
+	if(isprime(n)){
+	    cout<<"is a prime number"<<endl;
+	}
+	else{
+	    cout<<"is not a prime number"<<endl;
+	}
+	return 0;
+}
