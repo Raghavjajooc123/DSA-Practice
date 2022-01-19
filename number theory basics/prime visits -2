@@ -1,0 +1,38 @@
+#include <iostream>
+using namespace std;
+# define ll long long
+void prime_seive(int *p){
+    //marking all odd numbers as primes
+    for(ll i=3; i<=1000000; i+=2){
+        p[i]=1;
+    }
+    for(ll i = 3; i<=1000000; i+=2){
+        if(p[i]==1){
+            for(ll j = i*i; j<=1000000; j+=i){
+                p[j]=0;
+            }
+        }
+    }
+    //special cases
+    p[2] = 1;
+    p[0]=p[1]=0;
+}
+
+int main() {
+	// prime visits
+	int arr[1000005] = {0};
+    prime_seive(arr);
+    //computing the cummalative sum arr
+    for(ll j = 1; j<=1000000; j++){
+        arr[j] = arr[j]+ arr[j-1];
+    }
+    int t;
+	cin>>t;
+	for(int i = 0; i<t; i++){
+    	int m,n;
+    	cin>>m>>n;
+    	int ans = arr[n]-arr[m-1];
+    	cout<<ans<<endl;
+	}
+	return 0;
+}
