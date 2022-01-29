@@ -1,0 +1,29 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+vector<int> primefactors(int n){
+    vector<int> factors;
+    factors.clear();
+    for(int i = 2; i*i<=n; i++){
+        if(n%i==0){
+            factors.push_back(i);
+            while(n%i==0){
+                n = n/i;
+            }
+        }
+    }
+    if(n!=1){
+        factors.push_back(n);
+    }
+    return factors;
+}
+int main() {
+	// prime factorization
+	int n;
+	cin>>n;
+	vector<int> p = primefactors(n);
+	for(auto f:p){
+	    cout<<f<<" ";
+	}
+	return 0;
+}
