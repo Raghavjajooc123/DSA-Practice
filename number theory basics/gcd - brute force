@@ -1,0 +1,21 @@
+#include<iostream>
+using namespace std;
+int gcd(int m ,int n){
+	int ans = 1;
+	int ma = max(m,n);
+	int mi = min(m,n);
+	for(int i=2; i*i<=ma; i++){
+		while(ma%i == 0 && mi%i == 0){
+			ans = ans*i;
+			mi/=i;
+		}
+	}
+	return ans;
+}
+int main() {
+	//calculating GCD
+	int m,n;
+	cin>>m>>n;
+	cout<<gcd(m,n);
+	return 0;
+}
