@@ -1,0 +1,33 @@
+#include<iostream>
+using namespace std;
+long long divisiblesubarrays(int n, long long arr[100005]){
+	long long commarr[100005] = {0};
+	commarr[0]=1;//because zero would always be present in the starting
+	long long sum = 0; 
+	//we head on to build the prefix array where we have the no. of times each value occurs
+	for(int k=0; k<n; k++){
+		sum+=arr[k];
+		sum=(sum+n)%n;
+		commarr[sum]++; 
+	}
+	long long ans = 0;
+	for(int m=0; m<n; m++){
+		long long l = commarr[m];
+		ans = ans + l*(l-1)/2;
+	}
+	return ans;
+}
+int main() {
+	int t;
+	cin>>t;
+	for(int i=0; i<t; i++){
+		int n;
+		cin>>n;
+		long long arr[100005];
+		for(long long k=0; k<n; k++){
+			cin>>arr[k];
+		}
+		cout<<divisiblesubarrays(n,arr)<<endl;
+	}
+	return 0;
+}
