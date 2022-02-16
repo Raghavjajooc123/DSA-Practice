@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+int factorial(int n){
+    if(n>0){
+        int ans = n*factorial(n-1);
+        return ans;
+    }
+    else{
+        return 1;
+    }
+}
+
+int main() {
+	// factorial using recursion
+	int n;
+	cin>>n;
+	cout<<factorial(n)<<endl;
+	return 0;
+}
