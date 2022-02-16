@@ -1,0 +1,31 @@
+#include <iostream>
+#include <algorithm>
+
+using namespace std;
+
+int solution(int arr[]){
+    int n = sizeof(arr)/sizeof(arr[0]);
+    cout<<n<<endl;
+    int avg=0;
+    for(int i=0;i<n;i++){
+        avg=avg + arr[i];
+    }
+    avg=avg/n;
+    int ma=max_element(arr,arr+n)-arr;
+    int mi=min_element(arr,arr+n)-arr;
+    cout<<"max:"<<ma<<endl;
+    cout<<"min:"<<mi<<endl;
+    if(max(abs(arr[ma]-avg), abs(arr[mi]-avg)) == abs(arr[ma]-avg)){
+        return ma;
+    }
+    else{
+        return mi;
+    }
+}
+
+int main() {
+	// your code goes here
+	int arr[] = {9,4,-3,10};
+	cout<<solution(arr);
+	return 0;
+}
