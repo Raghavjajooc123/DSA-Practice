@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+void incr(int n){
+    if(n==1){
+        cout<<n<<" ";
+        return;
+    }
+    incr(n-1);
+    cout<<n<<" ";
+}
+
+void decr(int n){
+    if(n==1){
+        cout<<n<<endl;
+        return;
+    }
+    cout<<n<<" ";
+    decr(n-1);
+}
+
+int main() {
+	// printing in increasing and decreasing order using recursion
+	int n;
+	cin>>n;
+	incr(n);
+	cout<<endl;
+	decr(n);
+	cout<<endl;
+	return 0;
+}
