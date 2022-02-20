@@ -1,0 +1,18 @@
+#include <iostream>
+using namespace std;
+int multiplication(int m, int n){
+    //base case
+    if(m==1){
+        return n;
+    }
+    
+    //rec case
+    return n+multiplication(n,m-1);
+}
+int main() {
+	// multiply without* operator
+	int n,m;
+	cin>>n>>m;
+	cout<<multiplication(m,n)<<endl;
+	return 0;
+}
