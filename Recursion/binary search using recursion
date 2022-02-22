@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+
+int binarysearch(int arr[], int start, int end, int x){
+    if(start>end){
+        return -1;
+    }
+    int m = (start+end)/2;
+    if(arr[m] == x){
+        return (start+end)/2;
+    }
+    else if(arr[m] > x){
+        binarysearch(arr,start,m-1, x);
+    }
+    else{
+        binarysearch(arr,m+1,end,x);
+    }
+}
+
+int main() {
+	// binary search using recursion
+	int arr[] = {1,2,3,14,45,76,77,78,88};
+	int n = sizeof(arr)/sizeof(arr[0]);
+	int x = 88;
+	
+	int ans = binarysearch(arr,0, n, x);
+	cout<<ans<<endl;
+	return 0;
+}
