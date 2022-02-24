@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+int fastpower(int a, int n){
+    //base case
+    if(n==1){
+        return a;
+    }
+    
+    //rec case
+    if(n%2 == 0){
+        return fastpower(a*a, n/2);
+    }
+    else{
+        return a*fastpower(a*a, n/2);
+    }
+}
+int main() {
+	// fast power using recursion
+	int a,n;
+	cin>>a>>n;
+	cout<<fastpower(a,n)<<endl;
+	return 0;
+}
