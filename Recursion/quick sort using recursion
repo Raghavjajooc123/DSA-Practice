@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+int partition(int *arr,int s, int e){
+    //inplace(cant take extra array)
+    int pivot = arr[e];
+    int i = s-1;
+    int j = s;
+    for( ; j<e; j++){
+        if(arr[j]<=pivot){
+            //exanding the left region
+            i++;
+            swap(arr[i], arr[j]);
+        }
+    }
+    //placing the pivot element in the correct index
+    swap(arr[i+1],arr[e]);
+    //returning the pivot element
+    return i+1;
+}
+void quicksort(int *arr,int s, int e){
+    if(s>=e){   
+        return;
+    }
+    //getting the pivot point position
+    int p = partition(arr, s, e);
+    //left part
+    quicksort(arr, s, p-1);
+    //right part
+    quicksort(arr, p+1, e);
+}
+
+int main() {
+	// quick sort using recursion
+	int arr[100];
+	int n;
+	cin>>n;
+	for(int i=0; i<n; i++){
+	    cin>>arr[i];
+	}
+	quicksort(arr,0,n-1);
+    for(int i=0; i<n; i++){
+	    cout<<arr[i];
+	}
+	return 0;
+}
