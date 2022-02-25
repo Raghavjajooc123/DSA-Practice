@@ -1,0 +1,21 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+int stringtonumber(char a[], int len){
+    //base case
+    if(len == 0){
+        return 0;
+    }
+    
+    //rec case
+    int digit = a[len-1]-'0'; //last digit
+    return (stringtonumber(a, len-1)*10)+temp;
+}
+
+int main() {
+	// given a string, convert it into a number recursively
+	char a[] = "1234";
+	int len = strlen(a);
+	cout<<stringtonumber(a, len)<<endl;
+	return 0;
+}
