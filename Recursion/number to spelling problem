@@ -1,0 +1,25 @@
+#include <iostream>
+#include <string>
+using namespace std;
+void numberspeller(int n){
+    string arr[10] = {"zero","one","two","three","four","five","six","seven","eight","nine"};
+    
+    //base case
+    if(n%10 == n){
+        cout<<arr[n]<<" ";
+        return;
+    }
+    
+    numberspeller(n/10);
+    
+    int temp = n%10;
+    cout<<arr[temp]<<" ";
+}
+
+int main() {
+	// number to spelling problem
+	int n;
+	cin>>n;
+	numberspeller(n);
+	return 0;
+}
