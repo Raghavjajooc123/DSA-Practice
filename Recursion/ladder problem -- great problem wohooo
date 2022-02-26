@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+int ladderproblem(int n,int k){
+    //base case
+    if(n==0){
+        return 1;
+    }
+    if(n<0){
+        return 0;
+    }
+    //rec case
+    //f(n) = f(n-1)+f(n-2)+f(n-3)..........+f(n-k);
+    int ans =0;
+    for(int i=1; i<=k; i++){
+        ans+=ladderproblem(n-i, k);
+    }
+    return ans;
+}
+int main() {
+	// ladder problem -- great problem wohooo
+	int n,k; //k steps at a time
+	cin>>n>>k;
+	cout<<ladderproblem(n,k)<<endl;
+	return 0;
+}
