@@ -18,7 +18,7 @@ int ladderproblem(int n,int k){
 }
 int main() {
 	// ladder problem -- great problem wohooo
-	int n,k; //k steps at a time
+	int n,k; //k steps at a time, n no of steps
 	cin>>n>>k;
 	cout<<ladderproblem(n,k)<<endl;
 	return 0;
