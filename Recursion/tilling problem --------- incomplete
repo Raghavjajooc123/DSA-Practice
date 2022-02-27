@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+int tillingproblem(int n, int m){
+	if(m==1){
+		return 1;
+	}
+	//base case
+	if(n<m){
+		return 1;
+	}
+	if(n==m){
+		return 2;
+	}
+	//rec case
+	 return tillingproblem(n-1, m) + tillingproblem(n-4, m);
+}
+
+int main() {
+	// place the tiles problem
+	int t;
+	cin>>t;
+	for(int i=0; i<t; i++){
+		int m,n;
+		cin>>n>>m;
+		cout<<tillingproblem(n,m)<<endl;
+	}
+	return 0;
+}
