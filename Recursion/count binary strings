@@ -1,0 +1,20 @@
+#include <iostream>
+using namespace std;
+int countbinary(int n){
+    //base case
+    if(n==1){
+        return 2;
+    }
+    if(n==2){
+        return 3;
+    }
+    //rec case
+    return countbinary(n-1) + countbinary(n-2); //n-1 if 1st place is a zero and n-2 if 1st place is a one
+}
+int main() {
+	// count binary strings
+	int n;
+	cin>>n;
+	cout<<countbinary(n)<<endl;
+	return 0;
+}
