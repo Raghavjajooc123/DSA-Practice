@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+int friends(int n){
+    if(n==0 or n==1){
+        return 1;
+    }
+    if(n==2){
+        return 2;
+    }
+    //rec case
+    return friends(n-1)+(n-1)*friends(n-2);
+}
+int main() {
+	// friends problem
+	int n;
+	cin>>n;
+	cout<<friends(n)<<endl;
+	return 0;
+}
