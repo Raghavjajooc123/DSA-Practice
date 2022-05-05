@@ -1,0 +1,32 @@
+#include <iostream>
+using namespace std;
+void generatingbrackets(int n, int opencount, int closecount, int i, char *out){
+    //base case 
+    if(i==2*n){
+        out[i]='\0';
+        cout<<out<<endl;
+        return;
+    }
+    //recursive cases
+    //2 options
+    if(opencount<n){
+        out[i]='(';
+        generatingbrackets(n, opencount+1, closecount, i+1, out);
+    }
+    
+    if(closecount<opencount){
+        out[i]=')';
+        generatingbrackets(n, opencount, closecount+1, i+1, out);
+    }
+    
+    return;
+}
+
+int main() {
+	// generating brackets
+	int n;
+	cin>>n;
+	char out[100];
+	generatingbrackets(n, 0, 0, 0, out);
+	return 0;
+}
