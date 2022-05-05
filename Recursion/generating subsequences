@@ -1,0 +1,34 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+
+void printsubsequences(char *in,char *out, int i, int j){
+    //base case
+    if (in[i]=='\0'){
+        out[j]='\0';
+        cout<<out<<" ";
+        return;
+    }
+    //recursive case
+    //if the i th element is not taken
+    printsubsequences(in, out, i+1, j);
+    
+    //if the i th element is taken
+    out[j]=in[i];
+    printsubsequences(in, out, i+1, j+1);
+
+    return;
+}
+
+int main() {
+	// generating subsequences
+	char in[10];
+	cin>>in;
+	char out[10];
+	
+    printsubsequences(in,out,0,0);
+    cout<<endl;
+    int count = 1<<strlen(in);
+    cout<<count;
+	return 0;
+}
