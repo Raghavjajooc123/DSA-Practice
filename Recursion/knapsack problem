@@ -1,0 +1,41 @@
+#include <iostream>
+using namespace std;
+int profit(int n, int c, int *weights, int *prices, int i){
+    //base case
+    if(i==n || c==0){
+        return 0;
+    }
+    
+    
+    int inc, exc, ans;
+    inc=exc=ans=0;
+    //recursive case - 2 cases
+    //either we take the item
+    if(weights[i]<=c){
+        inc = prices[i] + profit(n, c-weights[i], weights, prices, i+1);
+    }
+    //either we don't take the item
+    exc = profit(n, c, weights, prices, i+1);
+    
+    ans = max(inc, exc);
+    return ans;
+    
+}
+
+int main() {
+	// knapsack problem
+	int n;
+	cin>>n;
+	int prices[100], weights[100];
+	for(int i=0; i<n; i++){
+	    cin>>weights[i];
+	}
+	for(int i=0; i<n; i++){
+	    cin>>prices[i];
+	}
+	int c;
+	cin>>c;
+	
+	cout<<profit(n, c, weights, prices, 0);
+	return 0;
+}
