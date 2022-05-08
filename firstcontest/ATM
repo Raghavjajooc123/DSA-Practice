@@ -1,0 +1,19 @@
+//  We have populated the solutions for the 10 easiest problems for your support.
+// Click on the SUBMIT button to make a submission to this problem.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int w;
+    float bal, ans;
+    cin>>w>>bal;
+    if(w%5 == 0 && bal>=(w + 0.5) && w!=0){
+        ans = bal - w - 0.5;
+    }
+    else{
+        ans = bal;
+    }
+    cout<<ans;
+	return 0;
+}
