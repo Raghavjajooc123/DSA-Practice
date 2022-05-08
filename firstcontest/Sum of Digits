@@ -1,0 +1,21 @@
+// We have populated the solutions for the 10 easiest problems for your support.
+// Click on the SUBMIT button to make a submission to this problem.
+
+#include <bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int t;
+    cin>>t;
+    for(int i=0; i<t; i++){
+        int num;
+        int sumofdigits = 0;
+        cin>>num;
+        for(int j=0; num!=0; j++){
+            sumofdigits = sumofdigits + (num%10);
+            num = num/10;
+        }
+        cout<<sumofdigits<<endl;
+    }
+    return 0;
+}
