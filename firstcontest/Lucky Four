@@ -1,0 +1,29 @@
+// We have populated the solutions for the 10 easiest problems for your support.
+// Click on the SUBMIT button to make a submission to this problem.
+
+#include <iostream>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int t;
+	cin >> t;
+	for(int i=0; i<t; i++){
+	    int a;
+	    cin>>a;
+	    int count = 0;
+	    while(a!=0){
+	        int digit = a%10;
+	        if(digit == 4){
+	            count++;
+	        }
+	        a = a/10;
+	    }
+	    cout<<count<<endl;
+	}
+	return 0;
+}
+
+
+
+
