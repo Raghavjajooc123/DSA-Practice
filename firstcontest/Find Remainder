@@ -1,0 +1,16 @@
+// We have populated the solutions for the 10 easiest problems for your support.
+// Click on the SUBMIT button to make a submission to this problem.
+
+#include<iostream>
+using namespace std;
+int main(){
+    int T;
+    cin>>T;
+    for(int i=0; i<T; i++){
+        int a,b;
+        cin>>a>>b;
+        int ans = a%b;
+        cout<<ans<<endl;
+    }
+}
+
