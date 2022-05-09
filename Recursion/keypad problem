@@ -1,0 +1,29 @@
+#include <iostream>
+using namespace std;
+string table[] = { " ", ".+@$", "abc", "def", "ghi", "jkl" , "mno", "pqrs" , "tuv", "wxyz" };
+void keypad(char *in, char *out, int i, int j){
+    //base case
+    if(in[i]=='\0'){
+        out[j]='\0';
+        cout<<out<<endl;
+        return;
+    }
+    
+    //rec case
+    int temp = (int)in[i] - 48;
+    int k = 0;
+    while(table[temp][k]!='\0'){
+        out[j] = table[temp][k];
+        keypad(in, out, i+1, j+1);
+        k++;
+    }
+}
+
+int main() {
+	// keypad problem
+	char in[10];
+	cin>>in;
+	char out[10];
+	keypad(in, out, 0, 0);
+	return 0;
+}
