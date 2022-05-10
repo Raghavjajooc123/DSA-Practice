@@ -1,0 +1,31 @@
+#include <iostream>
+#include <cstring>
+using namespace std;
+void permutations(char *str, int i){
+    //base case
+    if(str[i]=='\0'){
+        cout<<str<<endl;
+        return;
+    }
+    
+    //rec case
+    int j=i;
+    while(str[j]!='\0'){
+        swap(str[i], str[j]);
+        permutations(str, i+1);
+        //we have to do backtracking at this stage so that we can attain the orignal array, so we would
+        //perform the swap again.
+        swap(str[i], str[j]);
+        j++;
+    }
+    return;
+}
+
+int main() {
+	// generating permutations
+	char str[10];
+	cin>>str;
+	
+	permutations(str, 0);
+	return 0;
+}
