@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+bool ratinamaze(char maze[1000][1000], int (*out)[1000], int n, int m, int i, int j){
+    //base case
+    if(i==n-1 && j==m-1){
+        out[i][j]=1;
+		for(int i=0; i<n; i++){
+			for(int j=0; j<m; j++){
+				cout<<out[i][j]<<" ";
+			}
+			cout<<endl;
+		}
+        return true;
+    }
+    
+    //rec case
+    //rat should be inside the grid
+    if(i>=n || j>=m){
+        return false;
+    }
+    if(maze[i][j]=='X'){
+        return false;
+    }
+    
+    out[i][j]=1;
+    if(ratinamaze(maze, out, n, m, i, j+1)){
+        return true;
+    }
+    if(ratinamaze(maze, out, n, m, i+1, j)){
+        return true;
+    }
+    out[i][j]=0;
+    return false;
+}
+
+int main() {
+	// rat in a maze problem
+	int n,m;
+	cin>>n>>m;
+	char maze[1000][1000];
+	int out[1000][1000] = {0};
+	for(int i=0; i<n; i++){
+	    for(int j=0; j<m; j++){
+	        cin>>maze[i][j];
+	    }
+	}
+	if(!ratinamaze(maze, out, n, m, 0,0)){
+		cout<<"-1"<<endl;
+	}
+	return 0;
+}
