@@ -1,0 +1,16 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	// Contest Code:LP1TO201 Problem Code:CHFRICH
+	//Richie Rich
+	int t;
+	cin>>t;
+	while(t--){
+	    int a,b,x;
+	    cin>>a>>b>>x;
+	    int years = (b-a)/x;
+	    cout<<years<<endl;
+	}
+	return 0;
+}
