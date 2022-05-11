@@ -1,0 +1,22 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	// Contest Code:LP1TO201 Problem Code:TWODISH
+	//two dishes
+	int t;
+	cin>>t;
+	while(t--){
+	    int n,a,b,c;
+	    cin>>n>>a>>b>>c;
+	    int noofdishes = min(a+c, b);
+	    if(noofdishes >=n){
+	        cout<<"YES"<<endl;
+	    }
+	    else{
+	        cout<<"NO"<<endl;
+	    }
+	    
+	}
+	return 0;
+}
