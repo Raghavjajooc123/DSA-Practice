@@ -1,0 +1,21 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	// Contest Code:LP1TO201 Problem Code:MAX_DIFF
+	//Tastiness Problem
+	int t;
+	cin>>t;
+	while(t--){
+	    int n,s;
+	    cin>>n>>s;
+	    if(n>=s){
+	        cout<<s<<endl;
+	    }
+	    if(n<s){
+	        int ans = 2*n - s;
+	        cout<<ans<<endl;
+	    }
+	}
+	return 0;
+}
