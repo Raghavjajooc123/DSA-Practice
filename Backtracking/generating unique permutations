@@ -1,0 +1,36 @@
+#include <iostream>
+#include <cstring>
+#include <set>
+#include <string>
+using namespace std;
+void permutations(char *str, int i, set<string> &s){
+    //base case
+    if(str[i]=='\0'){
+        string t(str);
+        s.insert(t);
+        return;
+    }
+    
+    //rec case
+    int j=i;
+    while(str[j]!='\0'){
+        swap(str[i], str[j]);
+        permutations(str, i+1, s);
+        swap(str[i], str[j]);
+        j++;
+    }
+    return;
+}
+
+int main() {
+	// generating permutations in unique 
+	char str[10];
+	cin>>str;
+	set<string> s;
+	permutations(str, 0, s);
+	
+	for(auto str:s){
+	    cout<<str<<endl;
+	}
+	return 0;
+}
