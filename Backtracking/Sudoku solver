@@ -1,0 +1,78 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+bool can_be_present(int sudoku[9][9], int i, int j, int n, int num){
+    for(int a=0; a<n; a++){
+        if(sudoku[i][a] == num || sudoku[a][j] == num){
+            return false;
+        }
+    }
+    
+    int smaller = sqrt(n);
+    int si = (i/smaller)*smaller;
+    int sj = (j/smaller)*smaller;
+    
+    for(int a=si; a<si+smaller; a++){
+        for(int b=sj; b<sj+smaller; b++){
+            if(sudoku[a][b] == num){
+                return false;
+            }
+        }
+    }
+    return true;
+}
+
+bool sudokusolver(int sudoku[9][9], int i, int j, int n){
+    //base case
+    if(i==n){
+        for(int i=0; i<n; i++){
+	        for(int j=0; j<n; j++){
+	            cout<<sudoku[i][j]<<" ";
+	        }
+	        cout<<endl;
+	    }
+	    return true;
+    }
+    
+    //row ending case
+    if(j==n){
+        return sudokusolver(sudoku, i+1, 0, n);
+    }
+    
+    //skipping the prefilled cells
+    if(sudoku[i][j]!=0){
+        return sudokusolver(sudoku, i, j+1, n);
+    }
+    
+    //rec case
+    //taking the possible cases for the number
+    for(int k=1; k<=n; k++){
+        if(can_be_present(sudoku, i, j, n, k)){
+            //Lets assume it is the right answer
+            sudoku[i][j] = k;
+            bool isSudokusolved = sudokusolver(sudoku, i, j+1, n);
+            if(isSudokusolved){
+                return true;
+            }
+        }
+    }
+    sudoku[i][j] = 0;
+    return false;
+}
+
+int main() {
+	// Sudoku solver
+	int n;
+	cin>>n;
+	int sudoku[9][9];
+	for(int i=0; i<n; i++){
+	    for(int j=0; j<n; j++){
+	        cin>>sudoku[i][j];
+	    }
+	}
+	
+	sudokusolver(sudoku, 0, 0, n);
+	
+	return 0;
+}
