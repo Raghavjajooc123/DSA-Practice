@@ -1,0 +1,33 @@
+#include <iostream>
+#include <bitset>
+using namespace std;
+
+int ans=0, DONE; 
+
+void countnqueen_bitsat_optimized(int rowMask, int ld, int rd){
+    //base case
+    if(rowMask == DONE){
+        ans++;
+        return;
+    }
+    
+    //rec case
+    int safe = DONE & (~(rowMask | ld | rd));
+    while(safe){
+        int p = safe & (-safe);
+        safe = safe - p;
+        countnqueen_bitsat_optimized(rowMask | p, (ld | p)<<1, (rd | p)>>1);
+    }
+    
+    return;
+}
+
+int main() {
+	// Count N-Queen bitsat optimized
+	int n;
+	cin>>n;
+	DONE = ((1<<n)-1);
+	countnqueen_bitsat_optimized(0, 0, 0);
+	cout<<ans;
+	return 0;
+}
