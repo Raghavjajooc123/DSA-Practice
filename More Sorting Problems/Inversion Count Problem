@@ -1,0 +1,64 @@
+#include <iostream>
+using namespace std;
+int countbetweenarrays(int *arr, int start, int end){
+    
+    int mid = (start+end)/2;
+    
+    int i = start;
+    int j = mid+1;
+    int k = start;
+    
+    int temp[20];
+    int count = 0;
+    
+    while(i<=mid && j<=end){
+        if(arr[i]<=arr[j]){
+            temp[k++] = arr[i++];
+        }
+        else if(arr[i]>=arr[j]){
+            temp[k++] = arr[j++];
+            count = count + mid - i + 1;
+        }
+    }
+    while(j<=end){
+        temp[k++] = arr[j++];
+    }
+    while(i<=mid){
+        temp[k++] = arr[i++];
+    }
+    
+    for(int i=start; i<=end; i++){
+        arr[i] = temp[i];
+    }
+    return count;
+}
+int inversioncount(int *arr, int start, int end){
+    
+    //base case
+    if(start>=end){
+        return 0;
+    }
+    
+    //rec case
+    int mid = (start+end)/2;
+    int x = inversioncount(arr, start, mid);
+    int y = inversioncount(arr, mid+1, end);
+    int z = countbetweenarrays(arr, start, end); // cross inversions
+    int ans = x + y + z;
+    return ans;
+}
+
+int main() {
+	// Inversion Count Problem
+    int n;
+    cin>>n;
+    int arr[20];
+    for(int i=0; i<n; i++){
+        cin>>arr[i];
+    }
+    
+    int answer = inversioncount(arr, 0, n-1);
+    cout<<answer<<endl;
+    
+	return 0;
+}
