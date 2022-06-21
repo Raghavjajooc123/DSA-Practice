@@ -53,5 +53,37 @@ int main() {
     }
     cout<<endl;
 
+
+    l2.push_back("banana");
+    l2.push_back("guava");
+    l2.push_back("carrot");
+    l2.push_back("guava");
+    for(string s:l2){
+	    cout<<s<<" ";
+	}
+	cout<<endl;
+    
+    l2.remove("guava");
+    for(string s:l2){
+	    cout<<s<<" ";
+	}
+	cout<<endl;
+	
+	auto it = l2.begin()++;
+	it++;
+	l2.erase(it);
+    for(string s:l2){
+	    cout<<s<<" ";
+	}
+	cout<<endl;
+	
+	it = l2.begin()++;
+	it++;
+	l2.insert(it, "Mangooooo");
+    for(string s:l2){
+	    cout<<s<<" ";
+	}
+	cout<<endl;
+	
 	return 0;
 }
