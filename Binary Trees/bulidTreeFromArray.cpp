@@ -53,7 +53,7 @@ void bfs(node* root){
 }
 
 int main() {
-	//
+	//Tree from array
 	int n;
 	cin>>n;
 	int arr[1000];
