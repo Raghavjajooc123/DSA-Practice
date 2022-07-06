@@ -1,0 +1,26 @@
+class Solution {
+public:
+    static bool compareUnits(vector<int> box1, vector<int> box2){    
+        return (box1[1] >= box2[1]);
+    }
+    int maximumUnits(vector<vector<int>>& boxTypes, int truckSize) {
+        int max_weight = 0;
+        int n = boxTypes.size();
+        sort(boxTypes.begin(), boxTypes.end(), compareUnits);
+        int i = 0;
+        while(truckSize>=0 && i<n){
+            int curr_boxes = boxTypes[i][0];
+            int curr_box_units = boxTypes[i][1];
+            if(curr_boxes <= truckSize){
+                truckSize = truckSize - curr_boxes;
+                max_weight += (curr_boxes*curr_box_units);
+                i++;
+            }
+            else{
+                max_weight+=(truckSize*curr_box_units);
+                break;
+            }
+        }
+        return max_weight;
+    }
+};
