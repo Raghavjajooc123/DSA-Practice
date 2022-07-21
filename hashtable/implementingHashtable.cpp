@@ -94,13 +94,37 @@ class Hashtable{
             cout<<endl;
         }
     }
-    T search(string key){
+    T* search(string key){
         int idx = hashfn(key);
-        node<T>* temp = table[idx];
-        while(temp->key!=key){
+        Node<T>* temp = table[idx];
+        while(temp!=NULL){
+            if(temp->key == key){
+                return &temp->value;
+            }
             temp = temp->next;
         }
-        return temp->value;
+        return NULL;
+    }
+    void erase(string key){
+        int idx = hashfn(key);
+        Node<T>* temp = table[idx];
+        Node<T>* prev = NULL;
+        if(temp == NULL){
+            return;
+        }
+        if(temp->next == NULL && temp->key == key){
+            table[idx] = NULL;
+            delete temp;
+        }
+        else{
+            while(temp->key!=key){
+                prev = temp;
+                temp = temp->next;
+            }
+            prev->next = temp->next;
+            delete temp;
+        }
+        return;
     }
 };
 
@@ -112,6 +136,17 @@ int main() {
 	price_table.insert("Pepsi", 90);
 	price_table.insert("Coke", 80);
 	price_table.insert("Fries", 120);
+	price_table.print();
+	
+	int* Burger = price_table.search("Burger");
+	if(Burger == NULL){
+	    cout<<"Not present"<<endl;
+	}
+	else{
+	    cout<<"Burger "<<*Burger<<endl;
+	}
+	
+	price_table.erase("Burger");
 	price_table.print();
 	return 0;
 }
