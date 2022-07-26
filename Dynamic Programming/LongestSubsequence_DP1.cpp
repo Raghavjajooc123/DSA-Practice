@@ -4,9 +4,9 @@
 using namespace std;
 int LongestSubsequence_DP1(int * arr, int n){
     int dp[100] = {1};
-    for(int i=1; i<n; i++){
+    for(int i=0; i<n; i++){
         int maxlen = 0;
-        for(int j=1; j<i; j++){
+        for(int j=0; j<i; j++){
             if(arr[j]<arr[i]){
                 maxlen = max(maxlen, dp[j]);
             }
@@ -22,10 +22,10 @@ int LongestSubsequence_DP1(int * arr, int n){
     for(int i=0; i<n; i++){
         maxlen = max(maxlen, dp[i]);
     }
-    return maxlen+1;
+    return maxlen;
 }
 int main() {
-	// Longest subsequences DP-1
+	// Longest Subsequences DP-1 problem
 	int n;
 	cin>>n;
 	int arr[100];
