@@ -1,20 +1,31 @@
 class Solution {
 public:
-    int dp[100][100] = {0};
-    int pathHelper(int x, int y){
-        //base case
-        if(x==0 || y==0){
-            return dp[x][y] = 1;
-        }
-        if(dp[x][y]!=0){
-            return dp[x][y];
-        }
-        return dp[x][y] = pathHelper(x-1, y) + pathHelper(x, y-1);
-    }
+    // int dp[100][100] = {0};
+    // int pathHelper(int x, int y){
+    //     //base case
+    //     if(x==0 || y==0){
+    //         return dp[x][y] = 1;
+    //     }
+    //     if(dp[x][y]!=0){
+    //         return dp[x][y];
+    //     }
+    //     return dp[x][y] = pathHelper(x-1, y) + pathHelper(x, y-1);
+    // }
+    
     int uniquePaths(int m, int n) {
+    
+        //by combinations -- most optimized
+        int N = m+n-2;
+        int r = m-1;
+        double result = 1;
+        
+        for(int i=1; i<=r; i++){
+            result = result * (N-r+i)/i;
+        }
+        return (int)result;
         
         //top down DP approach
-        return pathHelper(m-1, n-1);
+        // return pathHelper(m-1, n-1);
         
         // bottom-Up DP approach
         // int dp[100][100] = {0};
